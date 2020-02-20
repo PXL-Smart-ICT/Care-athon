@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:g_karate_flutter/gif_loader.dart';
+import 'package:g_karate_flutter/person_form.dart';
 import 'package:g_karate_flutter/select_page.dart';
 
 void main() => runApp(MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SelectPage(title: 'G-karate'),
+      home: MyHomePage(title: 'G-karate'),
     );
   }
 }
@@ -26,18 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String imageGif;
-
-  @override
-  void initState() {
-    imageGif = '';
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,61 +35,82 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                RaisedButton(
-                  onPressed: () {
-                    setState(() {
-                      imageGif = '1';
-                    });
-                  },
-                  child: Text('Animatie 1'),
+        child: SingleChildScrollView(
+          child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        width: 500,
+                        child: RaisedButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SelectPage(title: "G-karate",)),);
+                          },
+                          child:  Column(
+                            children: <Widget>[
+                              Icon(Icons.person, size: 300,),
+                              Text('Tom', style: TextStyle(fontSize: 50)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        width: 500,
+                        child: RaisedButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SelectPage(title: "G-karate",)),);
+                          },
+                          child: Column(
+                            children: <Widget>[
+                              Icon(Icons.person, size: 300,),
+                              Text('Ronny', style: TextStyle(fontSize: 50)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        width: 500,
+                        child: RaisedButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SelectPage(title: "G-karate",)),);
+                          },
+                          child:  Column(
+                            children: <Widget>[
+                              Icon(Icons.person, size: 300,),
+                              Text('Ann', style: TextStyle(fontSize: 50)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        width: 500,
+                        child: RaisedButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => MyCustomForm()),);
+                          },
+                          child:  Column(
+                            children: <Widget>[
+                              Icon(Icons.add_circle, size: 300,),
+                              Text('Nieuw persoon toevoegen', style: TextStyle(fontSize: 50)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    setState(() {
-                      imageGif = '2';
-                    });
-                    },
-                  child: Text('Animatie 2'),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    setState(() {
-                      imageGif = '3';
-                    });
-                  },
-                  child: Text('Animatie 3'),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    setState(() {
-                      imageGif = '4';
-                    });
-                  },
-                  child: Text('Animatie 4'),
-                ),
-              ],
-            ),
-            chosenImage(),
-          ],
         ),
-      ),
+            )
     );
   }
-  Widget chosenImage(){
-    if(imageGif == '1'){
-      return Image.asset('assets/1a.gif');
-    }else if(imageGif == '2'){
-      return Image.asset('assets/1b.gif');
-    }else if(imageGif == '3'){
-      return Image.asset('assets/4.gif');
-    } else if(imageGif == '4'){
-      return Image.asset('assets/5.gif');
-    }else{
-      return Text('geen oefening geselecteerd');
-    }
-  }
+
 }
