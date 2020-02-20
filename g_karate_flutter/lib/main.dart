@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:g_karate_flutter/gif_loader.dart';
+import 'package:g_karate_flutter/select_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'G-karate'),
+      home: SelectPage(title: 'G-karate'),
     );
   }
 }
@@ -91,13 +92,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   Widget chosenImage(){
     if(imageGif == '1'){
-      return Image.asset('assets/3.gif');
+      return Image.asset('assets/1a.gif');
     }else if(imageGif == '2'){
-      return Image.asset('assets/2a.gif');
+      return Image.asset('assets/1b.gif');
     }else if(imageGif == '3'){
-      return Image.asset('assets/test2.gif');
+      return Image.asset('assets/4.gif');
     } else if(imageGif == '4'){
-      return Image.asset('assets/test.gif');
+      return Image.asset('assets/5.gif');
     }else{
       return Text('geen oefening geselecteerd');
     }
