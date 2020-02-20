@@ -122,7 +122,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     GestureDetector(
                       onTap: () => _setAgreedToTOS(!_agreedToTOS),
                       child: const Text(
-                        'Leftarm',
+                        'Rightleg',
                       ),
                     ),
                   ],

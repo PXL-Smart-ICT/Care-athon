@@ -30,7 +30,7 @@ class _SelectPage extends State<SelectPage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: exercise()
+      body: SingleChildScrollView(child: exercise())
     );
   }
 
