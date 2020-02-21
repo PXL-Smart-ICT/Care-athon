@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:g_karate_flutter/gif_loader.dart';
 import 'package:g_karate_flutter/person_form.dart';
+import 'package:g_karate_flutter/select_exercise_page.dart';
 import 'package:g_karate_flutter/select_page.dart';
 
 void main() => runApp(MyApp());
@@ -44,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 500,
                         child: RaisedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => SelectPage(title: "G-karate",)),);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SelectExercise(title: "Tom",)),);
                           },
                           child:  Column(
                             children: <Widget>[
@@ -61,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 500,
                         child: RaisedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => SelectPage(title: "G-karate",)),);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SelectExercise(title: "Ronny",)),);
                           },
                           child: Column(
                             children: <Widget>[
@@ -78,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 500,
                         child: RaisedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => SelectPage(title: "G-karate",)),);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SelectExercise(title: "Ann",)),);
                           },
                           child:  Column(
                             children: <Widget>[

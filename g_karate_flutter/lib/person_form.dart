@@ -37,7 +37,10 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  bool _agreedToTOS = true;
+  bool _RightLeg = false;
+  bool _LeftLeg = false;
+  bool _LeftArm = false;
+  bool _RightArm = false;
 
   @override
   Widget build(BuildContext context) {
@@ -67,66 +70,76 @@ class _RegisterFormState extends State<RegisterForm> {
               }
             },
           ),
+
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: Column(
+            child: Row(
               children: <Widget>[
-                Row(
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+
                   children: <Widget>[
-                    Checkbox(
-                      value: _agreedToTOS,
-                      onChanged: _setAgreedToTOS,
+                    Row(
+                      children: <Widget>[
+                        Checkbox(
+                          value: _LeftArm,
+                          onChanged: _setLeftArm,
+                        ),
+                        GestureDetector(
+                          onTap: () => _setLeftArm(!_LeftArm),
+                          child: const Text(
+                            'Leftarm  ',
+                          ),
+                        ),
+                      ],
                     ),
-                    GestureDetector(
-                      onTap: () => _setAgreedToTOS(!_agreedToTOS),
-                      child: const Text(
-                        'Leftarm',
-                      ),
+                    Row(
+                      children: <Widget>[
+                        Checkbox(
+                          value: _RightArm,
+                          onChanged: _setRightArm,
+                        ),
+                        GestureDetector(
+                          onTap: () => _setRightArm(!_RightArm),
+                          child: const Text(
+                            'Rightarm',
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+
+                      children: <Widget>[
+                        Checkbox(
+                          value: _LeftLeg,
+                          onChanged: _setLeftLeg,
+                        ),
+                        GestureDetector(
+                          onTap: () => _setLeftLeg(!_LeftLeg),
+                          child: const Text(
+                            'Leftleg  ',
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Checkbox(
+                          value: _RightLeg,
+                          onChanged: _setRightLeg,
+                        ),
+                        GestureDetector(
+                          onTap: () => _setRightLeg(!_RightLeg),
+                          child: const Text(
+                            'Rightleg',
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                Row(
-                  children: <Widget>[
-                    Checkbox(
-                      value: _agreedToTOS,
-                      onChanged: _setAgreedToTOS,
-                    ),
-                    GestureDetector(
-                      onTap: () => _setAgreedToTOS(!_agreedToTOS),
-                      child: const Text(
-                        'Rightarm',
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Checkbox(
-                      value: _agreedToTOS,
-                      onChanged: _setAgreedToTOS,
-                    ),
-                    GestureDetector(
-                      onTap: () => _setAgreedToTOS(!_agreedToTOS),
-                      child: const Text(
-                        'Leftleg',
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Checkbox(
-                      value: _agreedToTOS,
-                      onChanged: _setAgreedToTOS,
-                    ),
-                    GestureDetector(
-                      onTap: () => _setAgreedToTOS(!_agreedToTOS),
-                      child: const Text(
-                        'Rightleg',
-                      ),
-                    ),
-                  ],
-                ),
+                PersonPicture(),
+
               ],
             ),
           ),
@@ -135,7 +148,7 @@ class _RegisterFormState extends State<RegisterForm> {
               const Spacer(),
               OutlineButton(
                 highlightedBorderColor: Colors.black,
-                onPressed: _submittable() ? _submit : null,
+                onPressed: true ? _submit : null,
                 child: const Text('Register'),
               ),
             ],
@@ -145,18 +158,58 @@ class _RegisterFormState extends State<RegisterForm> {
     );
   }
 
-  bool _submittable() {
-    return _agreedToTOS;
+  Widget PersonPicture() {
+    if(_RightLeg && _LeftLeg && _LeftArm && _RightArm){
+      return Image.asset('assets/blue_man_red_body.png', height: 300, fit: BoxFit.fitWidth,);
+    }else if (_RightLeg && _LeftLeg){
+      return Image.asset('assets/blue_man_red_legs.png', height: 300, fit: BoxFit.fitWidth,);
+    }else if (_RightLeg && _RightArm){
+      return Image.asset('assets/blue_man_red_right_arm_right_leg.png', height: 300, fit: BoxFit.fitWidth,);
+    }else if (_RightLeg && _LeftArm){
+      return Image.asset('assets/blue_man_red_left_arm_right_leg.png', height: 300, fit: BoxFit.fitWidth,);
+    }else if (_LeftLeg && _RightArm){
+      return Image.asset('assets/blue_man_red_right_arm_left_leg.png', height: 300, fit: BoxFit.fitWidth,);
+    }else if (_LeftLeg && _LeftArm){
+      return Image.asset('assets/blue_man_red_left_arm_left_leg.png', height: 300, fit: BoxFit.fitWidth,);
+    }else if (_RightLeg){
+      return Image.asset('assets/blue_man_red_right_leg.png', height: 300, fit: BoxFit.fitWidth,);
+    }else if (_LeftLeg){
+      return Image.asset('assets/blue_man_red_left_leg.png', height: 300, fit: BoxFit.fitWidth,);
+    }else if (_RightArm && _LeftArm){
+      return Image.asset('assets/blue_man_red_arms.png', height: 300, fit: BoxFit.fitWidth,);
+    }else if (_RightArm){
+      return Image.asset('assets/blue_man_red_right_arm.png', height: 300, fit: BoxFit.fitWidth,);
+    }else if (_LeftArm){
+      return Image.asset('assets/blue_man_red_left_arm.png', height: 300, fit: BoxFit.fitWidth,);
+    }else{
+      return Image.asset('assets/blue_man.png', height: 300, fit: BoxFit.fitWidth,);
+    }
   }
+
 
   void _submit() {
     _formKey.currentState.validate();
     print('Form submitted');
   }
 
-  void _setAgreedToTOS(bool newValue) {
+  void _setLeftLeg(bool newValue) {
     setState(() {
-      _agreedToTOS = newValue;
+      _LeftLeg = newValue;
+    });
+  }
+  void _setRightLeg(bool newValue) {
+    setState(() {
+      _RightLeg = newValue;
+    });
+  }
+  void _setLeftArm(bool newValue) {
+    setState(() {
+      _LeftArm = newValue;
+    });
+  }
+  void _setRightArm(bool newValue) {
+    setState(() {
+      _RightArm = newValue;
     });
   }
 }
