@@ -25,7 +25,13 @@ class _SelectPage extends State<SelectPage> {
 
   void timerFunction(){
     Timer.periodic(Duration(seconds: 7), (timer){
-
+      if(imageGif <4){
+        setState(() {
+          imageGif +=1;
+        });
+      }else {
+        timer.cancel();
+      }
     });
   }
 
