@@ -1,4 +1,6 @@
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class SelectPage extends StatefulWidget {
@@ -17,6 +19,14 @@ class _SelectPage extends State<SelectPage> {
   void initState() {
     imageGif = 0;
     super.initState();
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => timerFunction());
+  }
+
+  void timerFunction(){
+    Timer.periodic(Duration(seconds: 7), (timer){
+
+    });
   }
 
   @override
@@ -92,6 +102,8 @@ class _SelectPage extends State<SelectPage> {
       );
     }
   }
+
+
 
   Widget chosenImage(){
     if(imageGif == 0){
