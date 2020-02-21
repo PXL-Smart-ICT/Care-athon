@@ -67,6 +67,7 @@ class _RegisterFormState extends State<RegisterForm> {
               }
             },
           ),
+
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: Column(
